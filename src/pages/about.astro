@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="About" description="About Ye Zheng.">
+  <section class="container about">
+    <img src="/images/ye.jpg" alt="Portrait of Ye Zheng" width="240" height="240" />
+    <div class="text">
+      <h1>About</h1>
+      <p>My name is Ye. I grew up in China and moved to the United States as a teenager. I have experience in mergers and acquisitions and currently work in strategy, with a growing interest in venture capital.</p>
+      <p>I am drawn to venture capital because it offers the opportunity to meet ambitious founders and help their teams build businesses that could shape the world around us. I have always had a passion for entrepreneurship and creating new things.</p>
+      <p>This website is where I will share my insights and document my journey as I explore venture capital, emerging technologies, and entrepreneurship.</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .about { display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: start; padding-top: 64px; max-width: 980px; }
+  img { width: 240px; height: 240px; object-fit: cover; border-radius: 4px; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 4.6vw, 46px); margin: 0 0 20px; }
+  .text p { font-family: var(--serif); font-size: 19px; line-height: 1.7; margin: 0 0 1.1em; max-width: 36em; }
+  @media (max-width: 720px) { .about { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; } img { width: 160px; height: 160px; } }
+</style>

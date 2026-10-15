@@ -1,0 +1,9 @@
+---
+import Card from './Card.astro';
+interface Props { memos: any[]; }
+const { memos } = Astro.props;
+---
+<div class="grid">{memos.map((m) => <Card memo={m} />)}</div>
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 48px 32px; }
+</style>

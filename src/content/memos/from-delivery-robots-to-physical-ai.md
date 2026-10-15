@@ -1,0 +1,45 @@
+---
+title: From Delivery Robots to Physical AI
+date: 2026-10-09
+section: physical-ai
+summary: Uber Eats delivery robots on a Journal Square sidewalk, and what they show about AI moving off screens and into the physical world.
+draft: false
+---
+
+Not long ago, I was visiting a friend in Journal Square, New Jersey. While walking along a busy sidewalk, something caught my attention: small delivery robots bearing the Uber Eats logo were navigating the streets and delivering food to customers.
+
+At first, I assumed restaurant employees were remotely controlling the robots. I later learned that these machines could navigate their surroundings and complete much of the delivery process autonomously, with limited human intervention.
+
+I found that fascinating.
+
+Rapid advances in artificial intelligence are turning ideas that once existed only in science fiction into reality. Machines are no longer limited to performing repetitive tasks in controlled environments. They are beginning to navigate public spaces, interpret their surroundings, and make decisions in the physical world.
+
+This shift is part of a broader technological development known as **physical AI**.
+
+## What Is Physical AI?
+
+Physical AI refers to artificial intelligence systems that can perceive, understand, and act within the physical world. Examples include robots, autonomous vehicles, delivery devices, and humanoid assistants.
+
+Traditional machines typically perform predefined tasks within a fixed set of rules. These rules create guardrails around what the machines can do, requiring them to operate within clearly defined parameters. For example, a robotic arm on an automotive assembly line may be responsible for installing glass panels onto vehicle frames, repeating the same movement thousands of times per shift. While highly efficient, the machine may lack the flexibility to respond to dynamic situations, such as a misplaced component or an unexpected obstacle.
+
+Physical AI systems are designed to be more adaptive. Rather than simply following fixed instructions, these systems can gather information from their surroundings, interpret that information, and determine an appropriate response.
+
+In simple terms, physical AI enables machines to answer three questions:
+
+1. **What is happening around me?**
+2. **What am I being asked to do?**
+3. **What action should I take?**
+
+Consider a delivery robot navigating a crowded sidewalk. The robot must identify pedestrians and obstacles, determine a safe route, and adjust its movements as conditions change. Construction zones, nearby traffic, uneven surfaces, traffic signals, or objects blocking the sidewalk may require the robot to reconsider its path in real time.
+
+This process may seem intuitive to humans, but it is incredibly difficult for machines. The physical world is unpredictable, and even a routine delivery can involve countless variables.
+
+## Why Does It Matter?
+
+Physical AI could reshape how work is performed across many industries. Delivery robots could improve last-mile logistics, more adaptable warehouse robots could make processing facilities more efficient, and autonomous machines could support tasks in manufacturing, transportation & logistic, healthcare, and many others.
+
+More importantly, the opportunity is not only about replacing human labor. Physical AI could automate dangerous, repetitive, and physically demanding tasks, allowing people to focus on work that requires creativity, judgment, and human interaction.
+
+The delivery robots I saw in Journal Square offer a small but tangible example of how AI is moving beyond screens and into the physical world.
+
+The future depicted in science fiction has not fully arrived, but parts of it are already moving along our sidewalks.

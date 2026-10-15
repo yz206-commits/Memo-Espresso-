@@ -1,0 +1,20 @@
+---
+import { sections } from '../data/sections';
+interface Props { current?: string; }
+const { current = 'all' } = Astro.props;
+---
+<div class="tabs-wrap">
+  <nav class="container tabs" aria-label="Sections">
+    <a href="/" aria-current={current === 'all' ? 'page' : undefined}>All Insights</a>
+    {sections.map((s) => (
+      <a href={`/sections/${s.slug}/`} aria-current={current === s.slug ? 'page' : undefined}>{s.name}</a>
+    ))}
+  </nav>
+</div>
+<style>
+  .tabs-wrap { border-bottom: 1px solid var(--line); background: var(--soft); }
+  .tabs { display: flex; gap: 32px; overflow-x: auto; scrollbar-width: none; }
+  .tabs a { flex: none; text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; padding: 16px 0 14px; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .tabs a:hover { color: var(--text); }
+  .tabs a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
+</style>

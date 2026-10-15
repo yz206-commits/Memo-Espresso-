@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SectionTabs from '../components/SectionTabs.astro';
+import Card from '../components/Card.astro';
+import Grid from '../components/Grid.astro';
+
+const memos = (await getCollection('memos', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const [latest, ...rest] = memos;
+---
+<Base>
+  <section class="container intro">
+    <h1>Insights</h1>
+    <p>Notes on startups, valuation, and emerging technology, written over a cup of espresso.</p>
+  </section>
+  <SectionTabs current="all" />
+  <div class="container body">
+    {latest ? (
+      <>
+        <Card memo={latest} big />
+        {rest.length > 0 && (
+          <>
+            <h2 class="more">More insights</h2>
+            <Grid memos={rest} />
+          </>
+        )}
+      </>
+    ) : (
+      <p class="empty">The first insight is on its way.</p>
+    )}
+  </div>
+</Base>
+<style>
+  .intro { padding-top: 56px; padding-bottom: 32px; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(36px, 5vw, 52px); margin: 0 0 8px; }
+  .intro p { margin: 0; color: var(--muted); font-size: 18px; max-width: 40em; }
+  .body { padding-top: 48px; }
+  .more { font-family: var(--serif); font-size: 26px; font-weight: 600; margin: 72px 0 28px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .empty { color: var(--muted); }
+</style>

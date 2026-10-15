@@ -1,0 +1,30 @@
+---
+import Thumb from './Thumb.astro';
+import { sectionName } from '../data/sections';
+interface Props { memo: any; big?: boolean; }
+const { memo, big = false } = Astro.props;
+const d = memo.data;
+const date = d.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+---
+<article class:list={['card', { big }]}>
+  <a href={`/memos/${memo.slug}/`} class="link">
+    <Thumb src={d.thumbnail} section={d.section} />
+    <div class="text">
+      <p class="meta"><span class="sec">{sectionName(d.section)}</span><time datetime={d.date.toISOString()}>{date}</time></p>
+      <h3>{d.title}</h3>
+      <p class="sum">{d.summary}</p>
+    </div>
+  </a>
+</article>
+<style>
+  .link { display: grid; gap: 16px; text-decoration: none; }
+  .link:hover h3 { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .meta { margin: 0; display: flex; gap: 12px; font-size: 13px; color: var(--muted); }
+  .sec { color: var(--accent); font-weight: 600; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 21px; margin: 6px 0 8px; }
+  .sum { margin: 0; color: var(--muted); font-size: 15px; }
+  .big .link { grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+  .big h3 { font-size: clamp(26px, 3.2vw, 36px); }
+  .big .sum { font-size: 17px; }
+  @media (max-width: 760px) { .big .link { grid-template-columns: 1fr; gap: 16px; } }
+</style>

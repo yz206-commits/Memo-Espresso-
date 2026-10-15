@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SectionTabs from '../../components/SectionTabs.astro';
+import Grid from '../../components/Grid.astro';
+import { sections } from '../../data/sections';
+
+export function getStaticPaths() {
+  return sections.map((s) => ({ params: { slug: s.slug }, props: { section: s } }));
+}
+const { section } = Astro.props;
+const memos = (await getCollection('memos', ({ data }) => !data.draft && data.section === section.slug))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base title={section.name} description={section.description}>
+  <section class="container intro">
+    <h1>{section.name}</h1>
+    <p>{section.description}</p>
+  </section>
+  <SectionTabs current={section.slug} />
+  <div class="container body">
+    {memos.length > 0
+      ? <Grid memos={memos} />
+      : <p class="empty">Nothing here yet. The first {section.name.toLowerCase()} piece is on its way. <a href="/">See all insights</a></p>}
+  </div>
+</Base>
+<style>
+  .intro { padding-top: 56px; padding-bottom: 32px; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 4.6vw, 48px); margin: 0 0 8px; }
+  .intro p { margin: 0; color: var(--muted); font-size: 18px; max-width: 40em; }
+  .body { padding-top: 48px; }
+  .empty { color: var(--muted); font-size: 17px; }
+</style>

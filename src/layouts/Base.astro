@@ -1,0 +1,65 @@
+---
+interface Props { title?: string; description?: string; }
+const { title, description = 'Insights on startups, valuation, and emerging technology by Ye Zheng.' } = Astro.props;
+const fullTitle = title ? `${title} | Memo & Espresso` : 'Memo & Espresso';
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" />
+  <style is:global>
+    :root {
+      --bg: #ffffff; --text: #1b1d21; --muted: #5f6670; --line: #e4e6ea;
+      --soft: #f4f5f7; --accent: #1f3a5f;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Source Serif 4", Georgia, serif;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    h1, h2, h3 { line-height: 1.25; text-wrap: balance; }
+  </style>
+  <style>
+    .site-header { border-bottom: 1px solid var(--line); }
+    .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 20px; flex-wrap: wrap; }
+    .logo { font-family: var(--serif); font-size: 24px; font-weight: 600; text-decoration: none; }
+    nav { display: flex; gap: 28px; }
+    nav a { text-decoration: none; font-weight: 500; color: var(--muted); padding: 4px 0; border-bottom: 2px solid transparent; }
+    nav a:hover, nav a.on { color: var(--text); border-bottom-color: var(--accent); }
+    footer { border-top: 1px solid var(--line); margin-top: 96px; }
+    footer .container { padding-top: 28px; padding-bottom: 28px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="logo" href="/">Memo &amp; Espresso</a>
+      <nav aria-label="Main">
+        <a href="/" class={path === '/' || path.startsWith('/sections') || path.startsWith('/memos') ? 'on' : ''}>Insights</a>
+        <a href="/about/" class={path.startsWith('/about') ? 'on' : ''}>About</a>
+      </nav>
+    </div>
+  </header>
+  <main><slot /></main>
+  <footer>
+    <div class="container">
+      <span>&copy; {new Date().getFullYear()} Ye Zheng. Views are my own and are not investment advice.</span>
+      <a href="/about/">About</a>
+    </div>
+  </footer>
+</body>
+</html>

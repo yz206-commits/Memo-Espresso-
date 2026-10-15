@@ -1,0 +1,13 @@
+---
+import { sectionName } from '../data/sections';
+interface Props { src?: string; section: string; alt?: string; }
+const { src, section, alt = '' } = Astro.props;
+---
+{src
+  ? <img class="thumb" src={src} alt={alt} loading="lazy" />
+  : <div class="thumb placeholder" aria-hidden="true"><span>{sectionName(section)}</span></div>}
+<style>
+  .thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; background: var(--soft); }
+  .placeholder { display: flex; align-items: flex-end; padding: 16px; background: linear-gradient(135deg, #1f3a5f, #2f5584); }
+  .placeholder span { color: #fff; font-family: var(--serif); font-size: 18px; opacity: .9; }
+</style>
