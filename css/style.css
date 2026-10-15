@@ -8,8 +8,8 @@
   --line: #e7d9cd;
   --accent: #57240d;     /* Espresso swatch */
   --banner: #57240d;     /* Espresso swatch */
-  --serif: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  --sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --serif: "Times New Roman", Times, Georgia, serif;
+  --sans: "Times New Roman", Times, Georgia, serif;
   --max: 1200px;
 }
 * { box-sizing: border-box; }
