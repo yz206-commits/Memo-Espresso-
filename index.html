@@ -1,19 +1,90 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ye</title>
-<style>
-  body { margin:0; min-height:100vh; display:grid; place-items:center;
-         font-family: Georgia, serif; background:#faf8f4; color:#1a1a1a; }
-  p { color:#666; font-family: system-ui, sans-serif; font-size:14px; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insights | Memo &amp; Espresso</title>
+  <meta name="description" content="Insights on startups, valuation, and emerging technology by Ye Zheng.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div style="text-align:center">
-    <h1>Ye</h1>
-    <p>Coming soon!</p>
-  </div>
+  <header class="site-header">
+    <div class="container">
+      <nav aria-label="Main">
+        <a href="/" aria-current="page">Insights</a>
+        <a href="/about">About</a>
+      </nav>
+      <a class="logo" href="/">Memo <span>&amp;</span> Espresso</a>
+      <div class="header-right"><a href="mailto:yezheng0206@gmail.com?subject=Subscribe%20to%20Memo%20%26%20Espresso">Subscribe</a></div>
+    </div>
+  </header>
+
+  <section class="banner">
+    <div class="container">
+      <h1>Insights</h1>
+      <p>Notes on startups, valuation, and emerging technology. Grab a cup of espresso and stay a while.</p>
+      <a class="btn" href="mailto:yezheng0206@gmail.com?subject=Subscribe%20to%20Memo%20%26%20Espresso">Subscribe</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" aria-selected="true" data-section="all">All Insights</button>
+      <button role="tab" aria-selected="false" data-section="physical-ai">Physical AI</button>
+      <button role="tab" aria-selected="false" data-section="startup-valuation">Startup Valuation</button>
+      <button role="tab" aria-selected="false" data-section="industry-trends">Industry Trends</button>
+    </div>
+
+    <!--
+      TO ADD A NEW INSIGHT: copy one <article class="card"> block below, paste it at the TOP of the list,
+      and change the link, image, section (data-section + label), date, and title.
+      Sections: physical-ai, startup-valuation, industry-trends
+    -->
+    <div class="grid" id="grid">
+      <article class="card" data-section="physical-ai">
+        <a href="/insights/from-delivery-robots-to-physical-ai">
+          <img src="/images/insights/from-delivery-robots-to-physical-ai.jpg" alt="" loading="lazy">
+          <p class="label">Physical AI</p>
+          <time datetime="2026-10-09">Oct 9, 2026</time>
+          <h2>From Delivery Robots to Physical AI</h2>
+          <span class="read">Read</span>
+        </a>
+      </article>
+
+      <p class="empty" id="empty" hidden>No insights in this section yet. Check back soon.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; 2026 Ye Zheng. Views are my own and are not investment advice.</span>
+      <span><a href="/">Insights</a><a href="/about">About</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll('.tabs button');
+    const cards = document.querySelectorAll('.card');
+    const empty = document.getElementById('empty');
+    function show(section) {
+      let count = 0;
+      cards.forEach(c => {
+        const match = section === 'all' || c.dataset.section === section;
+        c.hidden = !match;
+        if (match) count++;
+      });
+      empty.hidden = count > 0;
+      tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.section === section));
+    }
+    tabs.forEach(t => t.addEventListener('click', () => {
+      show(t.dataset.section);
+      history.replaceState(null, '', t.dataset.section === 'all' ? '/' : '#' + t.dataset.section);
+    }));
+    const start = location.hash.slice(1);
+    if (start && document.querySelector(`.tabs button[data-section="${start}"]`)) show(start);
+  </script>
 </body>
 </html>
