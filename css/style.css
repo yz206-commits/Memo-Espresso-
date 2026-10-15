@@ -8,8 +8,8 @@
   --line: #e7d9cd;
   --accent: #57240d;     /* Espresso swatch */
   --banner: #57240d;     /* Espresso swatch */
-  --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
-  --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --max: 1200px;
 }
 * { box-sizing: border-box; }
